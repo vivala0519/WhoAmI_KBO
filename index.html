@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#101722" />
+    <script>
+      try {
+        const theme = localStorage.getItem("who-am-i-kbo:theme") === "light" ? "light" : "dark";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document.querySelector('meta[name="theme-color"]').content =
+          theme === "light" ? "#f4f6f9" : "#101722";
+      } catch {}
+    </script>
+    <meta name="description" content="2026 KBO 선수 250명. 하루 한 명의 야구 선수를 구단·포지션·출생연도·등번호·키·연봉 여섯 가지 단서로 맞혀 보세요." />
+    <title>WHO AM I? · 야구 선수 맞히기</title>
+    <link rel="icon" href="/favicon.svg" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "retrievedAt": "2026-11-05T02:36:13.873Z",
+  "source": "Wikidata Query Service",
+  "license": "CC0",
+  "candidateFile": "data/wikidata-candidates-2026.json",
+  "queryScript": "scripts/fetch-wikidata-candidates.mjs",
+  "candidateCount": 1793,
+  "coverage": {
+    "koreanName": 1792,
+    "englishName": 1664,
+    "birthDate": 1791,
+    "anyDatedTeamMembership": 156,
+    "verified2026Roster": 0,
+    "position": 0,
+    "number": 0,
+    "heightCm": 0,
+    "salaryKRW": 0
+  },
+  "note": "Coverage counts describe fields returned by this query, not all Wikidata statements. Undated team memberships can include former players. No candidate was verified or installed in the game dataset."
+}

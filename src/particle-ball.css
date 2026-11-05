@@ -1,0 +1,31 @@
+.particle-ball {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  contain: layout paint;
+}
+.particle-ball-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.particle-ball-fallback {
+  position: absolute;
+  inset: 6.5% 11.5%;
+  display: block;
+  width: 77%;
+  height: 87%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+.particle-ball[data-state="ready"] .particle-ball-canvas {
+  opacity: 1;
+}
+.particle-ball[data-state="ready"] .particle-ball-fallback {
+  visibility: hidden;
+}

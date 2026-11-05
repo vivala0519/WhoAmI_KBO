@@ -1,0 +1,2564 @@
+{
+  "snapshotDate": "2026-11-05",
+  "startDate": "2026-11-05",
+  "sourceFiles": {
+    "salary": {
+      "name": "kbo_players_2026_salary_confirmed.csv",
+      "sha256": "3bb39badb196e266e3da3333dadbd6e29ef6182ac60900c410622d452c3d8761",
+      "rows": 993
+    },
+    "all": {
+      "name": "kbo_players_2026_all.csv",
+      "sha256": "b4c70e2a0ae059d02e273cea09c85dbdeda146d9218dc90e1f1cf9a2a99b4e76",
+      "rows": 1043
+    },
+    "wikidata": {
+      "name": "wikidata-candidates-2026.json",
+      "sha256": "d6adeb4ac904ee58911cc5388367453548145489dd36ac3b2680ebd1eb7b40fd"
+    }
+  },
+  "selection": {
+    "joinedSalaryRows": 993,
+    "eligible": 871,
+    "excluded": 122,
+    "exclusionReasons": {
+      "missingOrInvalidJersey": 122,
+      "missingOrInvalidKRWSalary": 1,
+      "unsupportedCurrency": 1
+    },
+    "exclusionReasonCountsMayOverlap": true,
+    "exclusionReasonCountsMayOverlap": true,
+    "selected": 250,
+    "jerseyNumbersPreserveLeadingZeros": true,
+    "order": "2026 published salary with numeric jersey, descending converted KRW; ties by ascending numeric player ID",
+    "cutoffSalaryKRW": 90000000,
+    "aboveCutoff": 241,
+    "tiedAtCutoff": 12,
+    "selectedAtCutoff": 9,
+    "teams": {
+      "두산": 21,
+      "KT": 27,
+      "SSG": 27,
+      "KIA": 28,
+      "롯데": 26,
+      "한화": 24,
+      "삼성": 28,
+      "LG": 28,
+      "키움": 17,
+      "NC": 24
+    },
+    "currencies": {
+      "KRW": 216,
+      "USD": 34
+    },
+    "latinSources": {
+      "romanized": 165,
+      "wikidata": 85
+    },
+    "firstTeamVerified": false,
+    "rightsVerified": false,
+    "salaryDefinitionNote": "2026 KBO profile salary; contract options not independently verified"
+  },
+  "rankedPlayers": [
+    {
+      "rank": 1,
+      "id": "76232",
+      "name": "양의지",
+      "club": "두산",
+      "number": "25",
+      "salaryKRW": 4200000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 2,
+      "id": "64001",
+      "name": "고영표",
+      "club": "KT",
+      "number": "1",
+      "salaryKRW": 2600000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 3,
+      "id": "75847",
+      "name": "최정",
+      "club": "SSG",
+      "number": "14",
+      "salaryKRW": 2200000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 4,
+      "id": "54640",
+      "name": "네일",
+      "club": "KIA",
+      "number": "40",
+      "salaryKRW": 2150080000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 5,
+      "id": "64021",
+      "name": "박세웅",
+      "club": "롯데",
+      "number": "21",
+      "salaryKRW": 2100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 6,
+      "id": "76715",
+      "name": "류현진",
+      "club": "한화",
+      "number": "99",
+      "salaryKRW": 2100000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 7,
+      "id": "53375",
+      "name": "후라도",
+      "club": "삼성",
+      "number": "75",
+      "salaryKRW": 1746940000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 8,
+      "id": "54400",
+      "name": "디아즈",
+      "club": "삼성",
+      "number": "0",
+      "salaryKRW": 1746940000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 9,
+      "id": "65320",
+      "name": "최원태",
+      "club": "삼성",
+      "number": "20",
+      "salaryKRW": 1600000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 10,
+      "id": "63950",
+      "name": "장현식",
+      "club": "LG",
+      "number": "50",
+      "salaryKRW": 1500000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 11,
+      "id": "77829",
+      "name": "김광현",
+      "club": "SSG",
+      "number": "29",
+      "salaryKRW": 1500000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 12,
+      "id": "53123",
+      "name": "오스틴",
+      "club": "LG",
+      "number": "23",
+      "salaryKRW": 1478180000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 13,
+      "id": "79109",
+      "name": "오지환",
+      "club": "LG",
+      "number": "10",
+      "salaryKRW": 1400000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 14,
+      "id": "54944",
+      "name": "데이비슨",
+      "club": "키움",
+      "number": "34",
+      "salaryKRW": 1310205000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 15,
+      "id": "53827",
+      "name": "에레디아",
+      "club": "SSG",
+      "number": "27",
+      "salaryKRW": 1075040000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 16,
+      "id": "54529",
+      "name": "레이예스",
+      "club": "롯데",
+      "number": "29",
+      "salaryKRW": 1075040000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 17,
+      "id": "55130",
+      "name": "톨허스트",
+      "club": "LG",
+      "number": "30",
+      "salaryKRW": 1075040000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 18,
+      "id": "56724",
+      "name": "화이트",
+      "club": "한화",
+      "number": "24",
+      "salaryKRW": 1075040000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 19,
+      "id": "69446",
+      "name": "원태인",
+      "club": "삼성",
+      "number": "18",
+      "salaryKRW": 1000000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 20,
+      "id": "69737",
+      "name": "노시환",
+      "club": "한화",
+      "number": "8",
+      "salaryKRW": 1000000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 21,
+      "id": "54730",
+      "name": "페라자",
+      "club": "한화",
+      "number": "30",
+      "salaryKRW": 940660000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 22,
+      "id": "55239",
+      "name": "잭로그",
+      "club": "두산",
+      "number": "39",
+      "salaryKRW": 940660000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 23,
+      "id": "55633",
+      "name": "올러",
+      "club": "KIA",
+      "number": "33",
+      "salaryKRW": 940660000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 24,
+      "id": "56034",
+      "name": "힐리어드",
+      "club": "KT",
+      "number": "34",
+      "salaryKRW": 940660000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 25,
+      "id": "56626",
+      "name": "카스트로",
+      "club": "KIA",
+      "number": "26",
+      "salaryKRW": 940660000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 26,
+      "id": "69045",
+      "name": "알칸타라",
+      "club": "키움",
+      "number": "54",
+      "salaryKRW": 940660000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 27,
+      "id": "62895",
+      "name": "한유섬",
+      "club": "SSG",
+      "number": "35",
+      "salaryKRW": 900000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 28,
+      "id": "65056",
+      "name": "엄상백",
+      "club": "한화",
+      "number": "11",
+      "salaryKRW": 900000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 29,
+      "id": "65933",
+      "name": "구창모",
+      "club": "NC",
+      "number": "59",
+      "salaryKRW": 900000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 30,
+      "id": "68050",
+      "name": "강백호",
+      "club": "한화",
+      "number": "50",
+      "salaryKRW": 900000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 31,
+      "id": "56523",
+      "name": "비슬리",
+      "club": "롯데",
+      "number": "23",
+      "salaryKRW": 873470000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 32,
+      "id": "56531",
+      "name": "로드리게스",
+      "club": "롯데",
+      "number": "31",
+      "salaryKRW": 873470000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 33,
+      "id": "55903",
+      "name": "라일리",
+      "club": "NC",
+      "number": "3",
+      "salaryKRW": 806280000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 34,
+      "id": "62415",
+      "name": "박해민",
+      "club": "LG",
+      "number": "17",
+      "salaryKRW": 800000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 35,
+      "id": "62528",
+      "name": "김원중",
+      "club": "롯데",
+      "number": "34",
+      "salaryKRW": 800000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 36,
+      "id": "62869",
+      "name": "문승원",
+      "club": "SSG",
+      "number": "42",
+      "salaryKRW": 800000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 37,
+      "id": "62907",
+      "name": "박민우",
+      "club": "NC",
+      "number": "2",
+      "salaryKRW": 800000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 38,
+      "id": "62947",
+      "name": "나성범",
+      "club": "KIA",
+      "number": "47",
+      "salaryKRW": 800000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 39,
+      "id": "63248",
+      "name": "함덕주",
+      "club": "LG",
+      "number": "11",
+      "salaryKRW": 800000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 40,
+      "id": "64646",
+      "name": "박찬호",
+      "club": "두산",
+      "number": "7",
+      "salaryKRW": 800000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 41,
+      "id": "65062",
+      "name": "김재윤",
+      "club": "삼성",
+      "number": "62",
+      "salaryKRW": 800000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 42,
+      "id": "76290",
+      "name": "김현수",
+      "club": "KT",
+      "number": "10",
+      "salaryKRW": 800000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 43,
+      "id": "77637",
+      "name": "양현종",
+      "club": "KIA",
+      "number": "54",
+      "salaryKRW": 800000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 44,
+      "id": "56855",
+      "name": "해치",
+      "club": "SSG",
+      "number": "55",
+      "salaryKRW": 792842000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 45,
+      "id": "61102",
+      "name": "유강남",
+      "club": "롯데",
+      "number": "27",
+      "salaryKRW": 700000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 46,
+      "id": "62234",
+      "name": "류지혁",
+      "club": "삼성",
+      "number": "16",
+      "salaryKRW": 700000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 47,
+      "id": "78513",
+      "name": "전준우",
+      "club": "롯데",
+      "number": "8",
+      "salaryKRW": 700000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 48,
+      "id": "79240",
+      "name": "허경민",
+      "club": "KT",
+      "number": "13",
+      "salaryKRW": 700000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 49,
+      "id": "61643",
+      "name": "홍건희",
+      "club": "KIA",
+      "number": "52",
+      "salaryKRW": 650000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 50,
+      "id": "56459",
+      "name": "페덱",
+      "club": "삼성",
+      "number": "59",
+      "salaryKRW": 636064885,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 51,
+      "id": "62931",
+      "name": "노진혁",
+      "club": "롯데",
+      "number": "52",
+      "salaryKRW": 600000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 52,
+      "id": "66291",
+      "name": "이영하",
+      "club": "두산",
+      "number": "50",
+      "salaryKRW": 600000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 53,
+      "id": "66606",
+      "name": "최원준",
+      "club": "KT",
+      "number": "3",
+      "salaryKRW": 600000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 54,
+      "id": "78122",
+      "name": "김태군",
+      "club": "KIA",
+      "number": "42",
+      "salaryKRW": 600000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 55,
+      "id": "78135",
+      "name": "이형종",
+      "club": "키움",
+      "number": "36",
+      "salaryKRW": 600000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 56,
+      "id": "78603",
+      "name": "김선빈",
+      "club": "KIA",
+      "number": "3",
+      "salaryKRW": 600000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 57,
+      "id": "79215",
+      "name": "박건우",
+      "club": "NC",
+      "number": "37",
+      "salaryKRW": 600000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 58,
+      "id": "79231",
+      "name": "정수빈",
+      "club": "두산",
+      "number": "31",
+      "salaryKRW": 600000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 59,
+      "id": "56966",
+      "name": "테일러",
+      "club": "NC",
+      "number": "66",
+      "salaryKRW": 564396000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 60,
+      "id": "56002",
+      "name": "대니엘",
+      "club": "KT",
+      "number": "36",
+      "salaryKRW": 545582800,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 61,
+      "id": "56305",
+      "name": "히우라",
+      "club": "키움",
+      "number": "22",
+      "salaryKRW": 537520000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 62,
+      "id": "66108",
+      "name": "홍창기",
+      "club": "LG",
+      "number": "51",
+      "salaryKRW": 520000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 63,
+      "id": "56801",
+      "name": "아빌라",
+      "club": "SSG",
+      "number": "33",
+      "salaryKRW": 510644000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 64,
+      "id": "60558",
+      "name": "오태곤",
+      "club": "SSG",
+      "number": "37",
+      "salaryKRW": 500000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 65,
+      "id": "62363",
+      "name": "한현희",
+      "club": "롯데",
+      "number": "1",
+      "salaryKRW": 500000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 66,
+      "id": "62404",
+      "name": "구자욱",
+      "club": "삼성",
+      "number": "5",
+      "salaryKRW": 500000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 67,
+      "id": "67119",
+      "name": "고우석",
+      "club": "LG",
+      "number": "19",
+      "salaryKRW": 500000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 68,
+      "id": "76118",
+      "name": "원종현",
+      "club": "키움",
+      "number": "46",
+      "salaryKRW": 500000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 69,
+      "id": "78224",
+      "name": "김재환",
+      "club": "SSG",
+      "number": "32",
+      "salaryKRW": 500000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 70,
+      "id": "79365",
+      "name": "박동원",
+      "club": "LG",
+      "number": "27",
+      "salaryKRW": 500000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 71,
+      "id": "56103",
+      "name": "카라스코",
+      "club": "LG",
+      "number": "59",
+      "salaryKRW": 483768000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 72,
+      "id": "68341",
+      "name": "안우진",
+      "club": "키움",
+      "number": "41",
+      "salaryKRW": 480000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 73,
+      "id": "69102",
+      "name": "문보경",
+      "club": "LG",
+      "number": "2",
+      "salaryKRW": 480000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 74,
+      "id": "75867",
+      "name": "김진성",
+      "club": "LG",
+      "number": "42",
+      "salaryKRW": 450000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 75,
+      "id": "67893",
+      "name": "박성한",
+      "club": "SSG",
+      "number": "2",
+      "salaryKRW": 420000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 76,
+      "id": "56799",
+      "name": "짐머맨",
+      "club": "한화",
+      "number": "12",
+      "salaryKRW": 403140000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 77,
+      "id": "62244",
+      "name": "박세혁",
+      "club": "삼성",
+      "number": "52",
+      "salaryKRW": 400000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 78,
+      "id": "63342",
+      "name": "조상우",
+      "club": "KIA",
+      "number": "11",
+      "salaryKRW": 400000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 79,
+      "id": "64006",
+      "name": "심우준",
+      "club": "한화",
+      "number": "7",
+      "salaryKRW": 400000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 80,
+      "id": "65769",
+      "name": "김범수",
+      "club": "KIA",
+      "number": "49",
+      "salaryKRW": 400000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 81,
+      "id": "67263",
+      "name": "최원준",
+      "club": "두산",
+      "number": "61",
+      "salaryKRW": 400000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 82,
+      "id": "72443",
+      "name": "최형우",
+      "club": "삼성",
+      "number": "34",
+      "salaryKRW": 400000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 83,
+      "id": "73211",
+      "name": "노경은",
+      "club": "SSG",
+      "number": "38",
+      "salaryKRW": 400000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 84,
+      "id": "78288",
+      "name": "최재훈",
+      "club": "한화",
+      "number": "13",
+      "salaryKRW": 400000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 85,
+      "id": "79192",
+      "name": "채은성",
+      "club": "한화",
+      "number": "22",
+      "salaryKRW": 400000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 86,
+      "id": "79402",
+      "name": "김상수",
+      "club": "KT",
+      "number": "7",
+      "salaryKRW": 400000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 87,
+      "id": "65207",
+      "name": "신민재",
+      "club": "LG",
+      "number": "4",
+      "salaryKRW": 380000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 88,
+      "id": "50854",
+      "name": "최지훈",
+      "club": "SSG",
+      "number": "54",
+      "salaryKRW": 370000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 89,
+      "id": "56950",
+      "name": "블레인",
+      "club": "NC",
+      "number": "50",
+      "salaryKRW": 369545000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 90,
+      "id": "51907",
+      "name": "김주원",
+      "club": "NC",
+      "number": "7",
+      "salaryKRW": 350000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 91,
+      "id": "50030",
+      "name": "소형준",
+      "club": "KT",
+      "number": "30",
+      "salaryKRW": 330000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 92,
+      "id": "66609",
+      "name": "전상현",
+      "club": "KIA",
+      "number": "51",
+      "salaryKRW": 310000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 93,
+      "id": "68220",
+      "name": "곽빈",
+      "club": "두산",
+      "number": "47",
+      "salaryKRW": 305000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 94,
+      "id": "50662",
+      "name": "정해영",
+      "club": "KIA",
+      "number": "62",
+      "salaryKRW": 300000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 95,
+      "id": "52060",
+      "name": "박영현",
+      "club": "KT",
+      "number": "60",
+      "salaryKRW": 300000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 96,
+      "id": "61666",
+      "name": "한승혁",
+      "club": "KT",
+      "number": "35",
+      "salaryKRW": 300000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 97,
+      "id": "62360",
+      "name": "김태훈",
+      "club": "삼성",
+      "number": "27",
+      "salaryKRW": 300000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 98,
+      "id": "62754",
+      "name": "임기영",
+      "club": "삼성",
+      "number": "38",
+      "salaryKRW": 300000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 99,
+      "id": "63543",
+      "name": "구승민",
+      "club": "롯데",
+      "number": "22",
+      "salaryKRW": 300000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 100,
+      "id": "64153",
+      "name": "양석환",
+      "club": "두산",
+      "number": "53",
+      "salaryKRW": 300000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 101,
+      "id": "74540",
+      "name": "강민호",
+      "club": "삼성",
+      "number": "47",
+      "salaryKRW": 300000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 102,
+      "id": "76267",
+      "name": "최주환",
+      "club": "키움",
+      "number": "53",
+      "salaryKRW": 300000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 103,
+      "id": "78548",
+      "name": "장성우",
+      "club": "KT",
+      "number": "22",
+      "salaryKRW": 300000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 104,
+      "id": "63123",
+      "name": "강승호",
+      "club": "두산",
+      "number": "23",
+      "salaryKRW": 298000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 105,
+      "id": "52415",
+      "name": "이재현",
+      "club": "삼성",
+      "number": "7",
+      "salaryKRW": 290000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 106,
+      "id": "64004",
+      "name": "김민혁",
+      "club": "KT",
+      "number": "53",
+      "salaryKRW": 290000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 107,
+      "id": "67143",
+      "name": "손주영",
+      "club": "LG",
+      "number": "29",
+      "salaryKRW": 290000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 108,
+      "id": "68119",
+      "name": "문성주",
+      "club": "LG",
+      "number": "8",
+      "salaryKRW": 280000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 109,
+      "id": "60768",
+      "name": "이태양",
+      "club": "KIA",
+      "number": "44",
+      "salaryKRW": 270000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 110,
+      "id": "69134",
+      "name": "이정용",
+      "club": "LG",
+      "number": "31",
+      "salaryKRW": 270000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 111,
+      "id": "56823",
+      "name": "타케다",
+      "club": "SSG",
+      "number": "23",
+      "salaryKRW": 268760000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 112,
+      "id": "67703",
+      "name": "박상원",
+      "club": "한화",
+      "number": "58",
+      "salaryKRW": 263000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 113,
+      "id": "64166",
+      "name": "배정대",
+      "club": "KT",
+      "number": "27",
+      "salaryKRW": 260000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 114,
+      "id": "51897",
+      "name": "조병현",
+      "club": "SSG",
+      "number": "19",
+      "salaryKRW": 250000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 115,
+      "id": "52605",
+      "name": "김도영",
+      "club": "KIA",
+      "number": "5",
+      "salaryKRW": 250000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 116,
+      "id": "63963",
+      "name": "권희동",
+      "club": "NC",
+      "number": "36",
+      "salaryKRW": 250000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 117,
+      "id": "65653",
+      "name": "김호령",
+      "club": "KIA",
+      "number": "27",
+      "salaryKRW": 250000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 118,
+      "id": "77263",
+      "name": "김강률",
+      "club": "LG",
+      "number": "37",
+      "salaryKRW": 250000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 119,
+      "id": "50106",
+      "name": "유영찬",
+      "club": "LG",
+      "number": "54",
+      "salaryKRW": 240000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 120,
+      "id": "51344",
+      "name": "김휘집",
+      "club": "NC",
+      "number": "44",
+      "salaryKRW": 240000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 121,
+      "id": "50458",
+      "name": "김지찬",
+      "club": "삼성",
+      "number": "58",
+      "salaryKRW": 230000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 122,
+      "id": "50859",
+      "name": "오원석",
+      "club": "KT",
+      "number": "47",
+      "salaryKRW": 230000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 123,
+      "id": "53764",
+      "name": "문현빈",
+      "club": "한화",
+      "number": "51",
+      "salaryKRW": 230000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 124,
+      "id": "69100",
+      "name": "구본혁",
+      "club": "LG",
+      "number": "6",
+      "salaryKRW": 230000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 125,
+      "id": "52430",
+      "name": "김영웅",
+      "club": "삼성",
+      "number": "30",
+      "salaryKRW": 220000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 126,
+      "id": "52701",
+      "name": "문동주",
+      "club": "한화",
+      "number": "1",
+      "salaryKRW": 220000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 127,
+      "id": "54263",
+      "name": "김택연",
+      "club": "두산",
+      "number": "63",
+      "salaryKRW": 220000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 128,
+      "id": "64350",
+      "name": "하영민",
+      "club": "키움",
+      "number": "50",
+      "salaryKRW": 210000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 129,
+      "id": "68043",
+      "name": "김민",
+      "club": "SSG",
+      "number": "1",
+      "salaryKRW": 210000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 130,
+      "id": "53892",
+      "name": "이로운",
+      "club": "SSG",
+      "number": "92",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 131,
+      "id": "61101",
+      "name": "임찬규",
+      "club": "LG",
+      "number": "1",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 132,
+      "id": "62700",
+      "name": "하주석",
+      "club": "KIA",
+      "number": "30",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 133,
+      "id": "63959",
+      "name": "임정호",
+      "club": "NC",
+      "number": "30",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 134,
+      "id": "65048",
+      "name": "김민수",
+      "club": "KT",
+      "number": "26",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 135,
+      "id": "65516",
+      "name": "배제성",
+      "club": "KT",
+      "number": "19",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 136,
+      "id": "65665",
+      "name": "이준영",
+      "club": "KIA",
+      "number": "20",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 137,
+      "id": "65949",
+      "name": "류진욱",
+      "club": "NC",
+      "number": "41",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 138,
+      "id": "66209",
+      "name": "조수행",
+      "club": "두산",
+      "number": "51",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 139,
+      "id": "67449",
+      "name": "김성윤",
+      "club": "삼성",
+      "number": "39",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 140,
+      "id": "68900",
+      "name": "김영규",
+      "club": "NC",
+      "number": "17",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 141,
+      "id": "68912",
+      "name": "김형준",
+      "club": "NC",
+      "number": "25",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 142,
+      "id": "73117",
+      "name": "우규민",
+      "club": "KT",
+      "number": "12",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 143,
+      "id": "77446",
+      "name": "백정현",
+      "club": "삼성",
+      "number": "29",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 144,
+      "id": "79456",
+      "name": "이지영",
+      "club": "SSG",
+      "number": "56",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 145,
+      "id": "79608",
+      "name": "안치홍",
+      "club": "키움",
+      "number": "9",
+      "salaryKRW": 200000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 146,
+      "id": "67391",
+      "name": "김재웅",
+      "club": "키움",
+      "number": "28",
+      "salaryKRW": 190000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 147,
+      "id": "68902",
+      "name": "신민혁",
+      "club": "NC",
+      "number": "18",
+      "salaryKRW": 190000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 148,
+      "id": "65707",
+      "name": "주현상",
+      "club": "한화",
+      "number": "66",
+      "salaryKRW": 187000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 149,
+      "id": "67266",
+      "name": "박치국",
+      "club": "두산",
+      "number": "1",
+      "salaryKRW": 187000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 150,
+      "id": "69517",
+      "name": "고승민",
+      "club": "롯데",
+      "number": "2",
+      "salaryKRW": 185000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 151,
+      "id": "52001",
+      "name": "안현민",
+      "club": "KT",
+      "number": "23",
+      "salaryKRW": 180000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 152,
+      "id": "52591",
+      "name": "윤동희",
+      "club": "롯데",
+      "number": "91",
+      "salaryKRW": 180000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 153,
+      "id": "61895",
+      "name": "서진용",
+      "club": "SSG",
+      "number": "22",
+      "salaryKRW": 180000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 154,
+      "id": "67539",
+      "name": "나균안",
+      "club": "롯데",
+      "number": "43",
+      "salaryKRW": 180000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 155,
+      "id": "68242",
+      "name": "정철원",
+      "club": "롯데",
+      "number": "65",
+      "salaryKRW": 180000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 156,
+      "id": "53754",
+      "name": "김서현",
+      "club": "한화",
+      "number": "44",
+      "salaryKRW": 168000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 157,
+      "id": "55912",
+      "name": "로건",
+      "club": "KT",
+      "number": "43",
+      "salaryKRW": 167975000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 158,
+      "id": "68525",
+      "name": "한동희",
+      "club": "롯데",
+      "number": "25",
+      "salaryKRW": 162000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 159,
+      "id": "51868",
+      "name": "고명준",
+      "club": "SSG",
+      "number": "18",
+      "salaryKRW": 160000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 160,
+      "id": "63260",
+      "name": "이우성",
+      "club": "NC",
+      "number": "55",
+      "salaryKRW": 160000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 161,
+      "id": "51264",
+      "name": "최승용",
+      "club": "두산",
+      "number": "28",
+      "salaryKRW": 155000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 162,
+      "id": "60146",
+      "name": "이승현",
+      "club": "삼성",
+      "number": "26",
+      "salaryKRW": 150000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 163,
+      "id": "63722",
+      "name": "한승택",
+      "club": "KT",
+      "number": "45",
+      "salaryKRW": 150000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 164,
+      "id": "65060",
+      "name": "주권",
+      "club": "KT",
+      "number": "38",
+      "salaryKRW": 150000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 165,
+      "id": "65343",
+      "name": "김택형",
+      "club": "SSG",
+      "number": "43",
+      "salaryKRW": 150000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 166,
+      "id": "67421",
+      "name": "최지광",
+      "club": "삼성",
+      "number": "11",
+      "salaryKRW": 150000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 167,
+      "id": "69041",
+      "name": "손동현",
+      "club": "KT",
+      "number": "41",
+      "salaryKRW": 150000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 168,
+      "id": "69995",
+      "name": "서호철",
+      "club": "NC",
+      "number": "5",
+      "salaryKRW": 150000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 169,
+      "id": "76430",
+      "name": "김태혁",
+      "club": "롯데",
+      "number": "24",
+      "salaryKRW": 150000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 170,
+      "id": "77564",
+      "name": "김민성",
+      "club": "롯데",
+      "number": "16",
+      "salaryKRW": 150000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 171,
+      "id": "50705",
+      "name": "강재민",
+      "club": "한화",
+      "number": "55",
+      "salaryKRW": 145000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 172,
+      "id": "50556",
+      "name": "최준용",
+      "club": "롯데",
+      "number": "56",
+      "salaryKRW": 140000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 173,
+      "id": "51111",
+      "name": "송승기",
+      "club": "LG",
+      "number": "13",
+      "salaryKRW": 136000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 174,
+      "id": "50167",
+      "name": "이주형",
+      "club": "키움",
+      "number": "2",
+      "salaryKRW": 135000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 175,
+      "id": "64007",
+      "name": "문상철",
+      "club": "KT",
+      "number": "24",
+      "salaryKRW": 135000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 176,
+      "id": "64504",
+      "name": "오윤석",
+      "club": "KT",
+      "number": "4",
+      "salaryKRW": 135000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 177,
+      "id": "68743",
+      "name": "정은원",
+      "club": "한화",
+      "number": "43",
+      "salaryKRW": 135000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 178,
+      "id": "56348",
+      "name": "유토",
+      "club": "키움",
+      "number": "48",
+      "salaryKRW": 134380000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 179,
+      "id": "56719",
+      "name": "왕옌청",
+      "club": "한화",
+      "number": "19",
+      "salaryKRW": 134380000,
+      "currency": "USD",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 180,
+      "id": "56911",
+      "name": "토다",
+      "club": "NC",
+      "number": "11",
+      "salaryKRW": 134380000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 181,
+      "id": "66704",
+      "name": "김태연",
+      "club": "한화",
+      "number": "25",
+      "salaryKRW": 133000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 182,
+      "id": "60263",
+      "name": "이재학",
+      "club": "NC",
+      "number": "51",
+      "salaryKRW": 131000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 183,
+      "id": "51648",
+      "name": "이의리",
+      "club": "KIA",
+      "number": "48",
+      "salaryKRW": 130000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 184,
+      "id": "54812",
+      "name": "정준재",
+      "club": "SSG",
+      "number": "3",
+      "salaryKRW": 130000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 185,
+      "id": "67954",
+      "name": "김진호",
+      "club": "NC",
+      "number": "54",
+      "salaryKRW": 130000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 186,
+      "id": "68856",
+      "name": "최민준",
+      "club": "SSG",
+      "number": "30",
+      "salaryKRW": 130000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 187,
+      "id": "69745",
+      "name": "김도현",
+      "club": "KIA",
+      "number": "60",
+      "salaryKRW": 130000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 188,
+      "id": "69969",
+      "name": "전사민",
+      "club": "NC",
+      "number": "57",
+      "salaryKRW": 130000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 189,
+      "id": "51865",
+      "name": "조형우",
+      "club": "SSG",
+      "number": "20",
+      "salaryKRW": 125000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 190,
+      "id": "65703",
+      "name": "이도윤",
+      "club": "한화",
+      "number": "5",
+      "salaryKRW": 121000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 191,
+      "id": "51454",
+      "name": "이승현",
+      "club": "삼성",
+      "number": "57",
+      "salaryKRW": 120000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 192,
+      "id": "54610",
+      "name": "성영탁",
+      "club": "KIA",
+      "number": "65",
+      "salaryKRW": 120000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 193,
+      "id": "64995",
+      "name": "배재환",
+      "club": "NC",
+      "number": "61",
+      "salaryKRW": 120000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 194,
+      "id": "69636",
+      "name": "오선우",
+      "club": "KIA",
+      "number": "56",
+      "salaryKRW": 120000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 195,
+      "id": "78168",
+      "name": "서건창",
+      "club": "키움",
+      "number": "14",
+      "salaryKRW": 120000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 196,
+      "id": "63765",
+      "name": "김종수",
+      "club": "한화",
+      "number": "38",
+      "salaryKRW": 117000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 197,
+      "id": "69962",
+      "name": "송명기",
+      "club": "NC",
+      "number": "45",
+      "salaryKRW": 115000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 198,
+      "id": "50208",
+      "name": "오명진",
+      "club": "두산",
+      "number": "6",
+      "salaryKRW": 112000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 199,
+      "id": "67207",
+      "name": "이유찬",
+      "club": "두산",
+      "number": "13",
+      "salaryKRW": 112000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 200,
+      "id": "50500",
+      "name": "황성빈",
+      "club": "롯데",
+      "number": "0",
+      "salaryKRW": 110000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 201,
+      "id": "64340",
+      "name": "임지열",
+      "club": "키움",
+      "number": "29",
+      "salaryKRW": 110000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 202,
+      "id": "66409",
+      "name": "이성규",
+      "club": "삼성",
+      "number": "13",
+      "salaryKRW": 110000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 203,
+      "id": "66657",
+      "name": "이진영",
+      "club": "한화",
+      "number": "10",
+      "salaryKRW": 110000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 204,
+      "id": "68205",
+      "name": "전민재",
+      "club": "롯데",
+      "number": "13",
+      "salaryKRW": 110000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 205,
+      "id": "68928",
+      "name": "김시훈",
+      "club": "KIA",
+      "number": "61",
+      "salaryKRW": 110000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 206,
+      "id": "69108",
+      "name": "이지강",
+      "club": "LG",
+      "number": "32",
+      "salaryKRW": 110000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 207,
+      "id": "79140",
+      "name": "최동환",
+      "club": "KT",
+      "number": "16",
+      "salaryKRW": 110000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 208,
+      "id": "56236",
+      "name": "세베리노",
+      "club": "두산",
+      "number": "36",
+      "salaryKRW": 107504000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 209,
+      "id": "50464",
+      "name": "이승민",
+      "club": "삼성",
+      "number": "28",
+      "salaryKRW": 105000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 210,
+      "id": "64984",
+      "name": "김태진",
+      "club": "키움",
+      "number": "1",
+      "salaryKRW": 105000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 211,
+      "id": "67246",
+      "name": "김명신",
+      "club": "두산",
+      "number": "46",
+      "salaryKRW": 105000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 212,
+      "id": "50157",
+      "name": "김윤식",
+      "club": "LG",
+      "number": "47",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 213,
+      "id": "51417",
+      "name": "김현준",
+      "club": "삼성",
+      "number": "44",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 214,
+      "id": "52639",
+      "name": "최지민",
+      "club": "KIA",
+      "number": "39",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 215,
+      "id": "53455",
+      "name": "이호성",
+      "club": "삼성",
+      "number": "1",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 216,
+      "id": "53613",
+      "name": "윤영철",
+      "club": "KIA",
+      "number": "13",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 217,
+      "id": "61353",
+      "name": "고종욱",
+      "club": "KIA",
+      "number": "57",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 218,
+      "id": "61404",
+      "name": "김헌곤",
+      "club": "삼성",
+      "number": "32",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 219,
+      "id": "62332",
+      "name": "김재현",
+      "club": "키움",
+      "number": "32",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 220,
+      "id": "62802",
+      "name": "박승욱",
+      "club": "롯데",
+      "number": "53",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 221,
+      "id": "62864",
+      "name": "김민식",
+      "club": "SSG",
+      "number": "24",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 222,
+      "id": "62934",
+      "name": "김성욱",
+      "club": "SSG",
+      "number": "31",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 223,
+      "id": "67603",
+      "name": "이승호",
+      "club": "키움",
+      "number": "47",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 224,
+      "id": "67905",
+      "name": "천재환",
+      "club": "NC",
+      "number": "23",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 225,
+      "id": "68419",
+      "name": "최지명",
+      "club": "LG",
+      "number": "16",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 226,
+      "id": "68646",
+      "name": "한준수",
+      "club": "KIA",
+      "number": "25",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 227,
+      "id": "69054",
+      "name": "이상동",
+      "club": "KT",
+      "number": "37",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 228,
+      "id": "69159",
+      "name": "정우영",
+      "club": "LG",
+      "number": "18",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 229,
+      "id": "76812",
+      "name": "이재원",
+      "club": "한화",
+      "number": "20",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 230,
+      "id": "77211",
+      "name": "이용찬",
+      "club": "두산",
+      "number": "45",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 231,
+      "id": "77318",
+      "name": "장시환",
+      "club": "LG",
+      "number": "28",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 232,
+      "id": "77532",
+      "name": "손아섭",
+      "club": "두산",
+      "number": "24",
+      "salaryKRW": 100000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 233,
+      "id": "54795",
+      "name": "황영묵",
+      "club": "한화",
+      "number": "95",
+      "salaryKRW": 96000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 234,
+      "id": "50150",
+      "name": "손호영",
+      "club": "롯데",
+      "number": "33",
+      "salaryKRW": 95000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 235,
+      "id": "50812",
+      "name": "박시후",
+      "club": "SSG",
+      "number": "57",
+      "salaryKRW": 95000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 236,
+      "id": "51551",
+      "name": "나승엽",
+      "club": "롯데",
+      "number": "51",
+      "salaryKRW": 95000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 237,
+      "id": "66112",
+      "name": "김기연",
+      "club": "두산",
+      "number": "22",
+      "salaryKRW": 95000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 238,
+      "id": "68092",
+      "name": "한두솔",
+      "club": "SSG",
+      "number": "34",
+      "salaryKRW": 95000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 239,
+      "id": "69594",
+      "name": "박진",
+      "club": "롯데",
+      "number": "44",
+      "salaryKRW": 95000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 240,
+      "id": "56011",
+      "name": "스기모토",
+      "club": "KT",
+      "number": "11",
+      "salaryKRW": 94066000,
+      "currency": "USD",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 241,
+      "id": "52204",
+      "name": "이병헌",
+      "club": "두산",
+      "number": "29",
+      "salaryKRW": 94000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 242,
+      "id": "50054",
+      "name": "천성호",
+      "club": "LG",
+      "number": "53",
+      "salaryKRW": 90000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 243,
+      "id": "50126",
+      "name": "이민호",
+      "club": "LG",
+      "number": "26",
+      "salaryKRW": 90000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 244,
+      "id": "53609",
+      "name": "곽도규",
+      "club": "KIA",
+      "number": "0",
+      "salaryKRW": 90000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 245,
+      "id": "54537",
+      "name": "정현수",
+      "club": "롯데",
+      "number": "57",
+      "salaryKRW": 90000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 246,
+      "id": "55455",
+      "name": "배찬승",
+      "club": "삼성",
+      "number": "55",
+      "salaryKRW": 90000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 247,
+      "id": "64560",
+      "name": "이창진",
+      "club": "KIA",
+      "number": "8",
+      "salaryKRW": 90000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 248,
+      "id": "64580",
+      "name": "김재열",
+      "club": "NC",
+      "number": "21",
+      "salaryKRW": 90000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    },
+    {
+      "rank": 249,
+      "id": "65522",
+      "name": "김강현",
+      "club": "롯데",
+      "number": "19",
+      "salaryKRW": 90000000,
+      "currency": "KRW",
+      "latinSource": "wikidata"
+    },
+    {
+      "rank": 250,
+      "id": "65586",
+      "name": "전병우",
+      "club": "삼성",
+      "number": "61",
+      "salaryKRW": 90000000,
+      "currency": "KRW",
+      "latinSource": "romanized"
+    }
+  ]
+}
