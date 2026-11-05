@@ -237,16 +237,10 @@ export function reducer(state: GameState, action: Action): GameState {
 }
 
 export function salaryText(value: number): string {
-  const rounded = Math.round(value);
-  const eok = Math.floor(rounded / 100_000_000);
-  const man = Math.floor((rounded % 100_000_000) / 10_000);
-  const won = rounded % 10_000;
-  const parts: string[] = [];
-  if (eok) parts.push(`${eok.toLocaleString("ko-KR")}억`);
-  if (man) parts.push(`${man.toLocaleString("ko-KR")}만`);
-  if (won || !parts.length) parts.push(`${won.toLocaleString("ko-KR")}원`);
-  else parts.push("원");
-  return parts.join(" ");
+  return `${new Intl.NumberFormat("ko-KR", {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }).format(value / 100_000_000)}억 원`;
 }
 
 export function compare(guess: Player, answer: Player): Clue[] {

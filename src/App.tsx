@@ -12,6 +12,18 @@ import type { Clue, GameState, Player } from "./game";
 const STORAGE_KEY = "who-am-i-kbo:daily:v1";
 const THEME_KEY = "who-am-i-kbo:theme";
 type ModalType = "help" | "stats" | "collection" | "share" | null;
+const CLUB_COLORS: Record<string, string> = {
+  LG: "#C30452",
+  KT: "#000000",
+  SSG: "#CE0E2D",
+  삼성: "#074CA1",
+  KIA: "#EA0029",
+  두산: "#1A1748",
+  롯데: "#041E42",
+  NC: "#315288",
+  한화: "#FC4E00",
+  키움: "#820024",
+};
 const exchangePolicies = Array.from(new Map(players
   .filter((player) => player.salaryCurrency !== "KRW")
   .map((player) => [player.salaryCurrency + ":" + player.fxRate + ":" + player.fxDate, player])).values());
@@ -23,12 +35,15 @@ function BaseballMark() {
   </svg>;
 }
 function PlayerAvatar({ player }: { player: Player }) {
-  return <span className="avatar" style={{ "--kit-color": "var(--accent)" } as React.CSSProperties}>
+  return <span className="avatar" style={{
+    "--kit-color": CLUB_COLORS[player.club] ?? "var(--accent)",
+    "--kit-ink": "#ffffff",
+  } as React.CSSProperties}>
     <svg viewBox="0 0 240 240" fill="none" aria-hidden="true">
-      <path d="m78 43-47 28 20 44 25-12v92c34 12 54 12 88 0v-92l25 12 20-44-47-28-23-7-19 20-19-20Z" fill="currentColor" fillOpacity=".09" stroke="currentColor" strokeWidth="2" />
-      <path d="m101 36 19 20 19-20m-19 20v139M77 103l2-31m84 31-2-31M82 182q38 13 76 0" stroke="currentColor" strokeOpacity=".5" strokeWidth="2" />
-      <circle cx="120" cy="75" r="2" fill="currentColor" /><circle cx="120" cy="96" r="2" fill="currentColor" />
-      <text x="151" y="155" textAnchor="middle" fill="currentColor" fontSize={player.number.length > 2 ? 43 : 55} fontWeight="700" fontFamily="system-ui,sans-serif">{player.number}</text>
+      <path d="m78 43-47 28 20 44 25-12v92c34 12 54 12 88 0v-92l25 12 20-44-47-28-23-7-19 20-19-20Z" fill="currentColor" stroke="currentColor" strokeWidth="2" />
+      <path d="m101 36 19 20 19-20m-19 20v139M77 103l2-31m84 31-2-31M82 182q38 13 76 0" stroke="var(--kit-ink)" strokeOpacity=".5" strokeWidth="2" />
+      <circle cx="120" cy="75" r="2" fill="var(--kit-ink)" /><circle cx="120" cy="96" r="2" fill="var(--kit-ink)" />
+      <text x="151" y="155" textAnchor="middle" fill="var(--kit-ink)" fontSize={player.number.length > 2 ? 43 : 55} fontWeight="700" fontFamily="system-ui,sans-serif">{player.number}</text>
     </svg>
   </span>;
 }
@@ -197,7 +212,7 @@ function Search({
                   <PlayerAvatar player={p} />
                   <span className="result-name">
                     <strong>{p.name}</strong>
-                    <span>{p.latinSource !== "romanized" ? p.latin + " · " : ""}{p.club} · {p.number}</span>
+                    <span>{p.club} · {p.number}</span>
                   </span>
                   <Icon name="chevron" />
                 </button>
@@ -232,15 +247,11 @@ function HelpContent() {
     <div className="example-grid">
       <Tile clue={{ key: "club", label: "구단", value: "LG", match: "exact" }} />
       <Tile clue={{ key: "heightCm", label: "키", value: "180cm", match: "miss", direction: "up" }} />
-      <Tile clue={{ key: "salaryKRW", label: "연봉", value: "5억 원", match: "miss", direction: "down" }} />
+      <Tile clue={{ key: "salaryKRW", label: "연봉", value: "5.0억 원", match: "miss", direction: "down" }} />
     </div>
-    <p className="example-caption">등번호 0과 00은 서로 달라요. 숫자값만 같으면 불일치로 표시하고 화살표는 표시하지 않아요. 포지션은 투수·포수·내야수·외야수 네 가지예요.</p>
-    <p className="example-caption">매일 한국 시간 자정에 새 문제가 열려요. 기록과 도감은 이 기기에 저장돼요. 영문 검색명 일부는 공식 표기와 다를 수 있어요.</p>
-    <p className="example-caption">연봉은 2026 KBO 프로필의 연봉을 원화로 환산한 금액이에요. 데이터 기준일: {SNAPSHOT_DATE}.</p>
-    {exchangePolicies.map((player) => <p className="example-caption" key={player.salaryCurrency + player.fxDate}>
-      {player.salaryCurrency} 1 = {new Intl.NumberFormat("ko-KR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(player.fxRate)}원 · {player.fxDate} 고정 환율
-    </p>)}
-    {!RELEASE_READY && <p className="example-caption">현재는 선수 소속을 확인 중인 미리보기예요.</p>}
+    <p className="example-caption">포지션은 투수·포수·내야수·외야수 네 가지예요.</p>
+    <p className="example-caption">연봉은 억 원 단위로 소수점 첫째 자리까지 표시하고, 비교는 원화 환산액을 기준으로 해요.</p>
+    <p className="example-caption">매일 한국 시간 자정에 새 문제가 열려요. 기록과 도감은 이 기기에 저장돼요.</p>
   </>;
 }
 function CollectionContent({ collectionDates }: { collectionDates: Record<string, string> }) {
@@ -552,7 +563,7 @@ export default function App() {
         <button type="button" className="records-icon" aria-label="나의 스카우팅 기록 보기" onClick={() => setModal("stats")}><Icon name="chart" /><span>스카우팅 기록</span></button>
       </div></aside>
     </div>
-    <p className="data-preview-note">2026 시즌 · 데이터 기준 {SNAPSHOT_DATE}{DEMO_DATA ? " · 연습 데이터" : !RELEASE_READY ? " · 미리보기" : ""}</p>
+    {/*<p className="data-preview-note">2026 시즌 · 데이터 기준 {SNAPSHOT_DATE}{DEMO_DATA ? " · 연습 데이터" : !RELEASE_READY ? " · 미리보기" : ""}</p>*/}
   </main>
   {showScrollTop && !modal && !toast && <button type="button" className="scroll-top" aria-label="맨 위로 이동" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}><Icon name="arrow" /></button>}
   {toast && <div className="toast" role="status"><Icon name="check" />{toast}</div>}
