@@ -2,6 +2,7 @@ import dataset from "./players.json";
 import schedule from "./daily-schedule.json";
 
 export type Position = "투수" | "포수" | "내야수" | "외야수";
+export type ThrowBat = `${"우투" | "좌투" | "우언" | "좌언" | "양투"}${"우타" | "좌타" | "양타"}`;
 export interface Player {
   id: string;
   name: string;
@@ -9,6 +10,7 @@ export interface Player {
   latinSource?: "wikidata" | "romanized";
   club: string;
   position: Position;
+  throwBat: ThrowBat;
   birthYear: number;
   number: string;
   heightCm: number;
@@ -25,6 +27,7 @@ export interface Player {
 export type Category =
   | "club"
   | "position"
+  | "throwBat"
   | "birthYear"
   | "number"
   | "heightCm"
@@ -78,6 +81,7 @@ export const playerMap = new Map(players.map((player) => [player.id, player]));
 export const categories = [
   "구단",
   "포지션",
+  "투타유형",
   "출생연도",
   "등번호",
   "키",
@@ -257,6 +261,7 @@ export function compare(guess: Player, answer: Player): Clue[] {
   return [
     text("club", "구단", guess.club, guess.club === answer.club),
     text("position", "포지션", guess.position, guess.position === answer.position),
+    text("throwBat", "투타유형", guess.throwBat, guess.throwBat === answer.throwBat),
     numeric("birthYear", "출생연도", `${guess.birthYear}년`, guess.birthYear, answer.birthYear),
     numeric("number", "등번호", guess.number, Number(guess.number), Number(answer.number), guess.number === answer.number),
     numeric("heightCm", "키", `${guess.heightCm}cm`, guess.heightCm, answer.heightCm),

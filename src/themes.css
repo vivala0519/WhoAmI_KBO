@@ -849,18 +849,18 @@ a:focus-visible {
   }
 }
 
-/* Unlimited mode includes a league clue; daily keeps its six-clue layout. */
-.clue-grid-unlimited,
-.empty-categories-unlimited {
+/* Seven daily clues, including the player's throwing and batting type. */
+.clue-grid-daily,
+.empty-categories-daily {
   grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 @media (max-width: 600px) {
-  .clue-grid-unlimited,
-  .empty-categories-unlimited {
+  .clue-grid-daily,
+  .empty-categories-daily {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .clue-grid-unlimited > :last-child,
-  .empty-categories-unlimited > :last-child {
+  .clue-grid-daily > :last-child,
+  .empty-categories-daily > :last-child {
     grid-column: 1 / -1;
   }
 }
