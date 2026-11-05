@@ -3,6 +3,7 @@ import type { ReactNode, RefObject } from "react";
 import { Icon } from "./icons";
 import { ParticleBall } from "./ParticleBall";
 import { useRewardedAd } from "./useRewardedAd";
+import { StreakPromotion } from "./StreakPromotion";
 import {
   categories, compare, dayKey, DEMO_DATA, MAX_REWARDED_ADS, MAX_TOTAL_ATTEMPTS,
   playerMap, players, reducer, RELEASE_READY, restore, shareText, searchPlayers, SNAPSHOT_DATE,
@@ -236,7 +237,7 @@ function Search({
 
 function HelpContent() {
   return <>
-    <p className="modal-intro">기본 5번 안에 오늘의 야구 선수를 맞혀보세요. 기회를 모두 쓰면 광고를 완료할 때마다 1번 더, 한 문제에서 최대 3번 도전할 수 있어요.</p>
+    <p className="modal-intro">기본 5번 안에 오늘의 야구 선수를 맞혀보세요. 광고를 끝까지 보면 기회가 1번 추가돼요. 광고는 한 문제에서 최대 3번 볼 수 있어 총 8번까지 도전할 수 있어요.</p>
     <ol className="help-steps">
       <li><span>01</span><div><strong>선수 이름을 검색하세요</strong><p>한국어, 영문 검색명, 초성을 지원해요. 목록에서 선수를 선택하면 한 번의 기회를 사용해요.</p></div></li>
       <li><span>02</span><div><strong>{categories.length}가지 단서를 확인하세요</strong><p>{categories.join("·")}를 비교해요. 보라는 정확히 일치, 분홍은 불일치예요.</p>
@@ -249,8 +250,8 @@ function HelpContent() {
       <Tile clue={{ key: "heightCm", label: "키", value: "180cm", match: "miss", direction: "up" }} />
       <Tile clue={{ key: "salaryKRW", label: "연봉", value: "5.0억 원", match: "miss", direction: "down" }} />
     </div>
-    <p className="example-caption">포지션은 투수·포수·내야수·외야수 네 가지예요. 투타유형은 투구와 타격 방향을 함께 비교해요. 예를 들어 우투좌타는 오른손으로 던지고 왼쪽 타석에서 치는 선수예요.</p>
-    <p className="example-caption">연봉은 억 원 단위로 소수점 첫째 자리까지 표시하고, 비교는 원화 환산액을 기준으로 해요.</p>
+    <p className="example-caption">포지션은 투수·포수·내야수·외야수 네 가지예요.</p>
+    <p className="example-caption">연봉은 억 원 단위로 소수점 첫째 자리까지 표시해요.</p>
     <p className="example-caption">매일 한국 시간 자정에 새 문제가 열려요. 기록과 도감은 이 기기에 저장돼요.</p>
   </>;
 }
@@ -525,10 +526,11 @@ export default function App() {
         {rewardOffer && <div className="result-card reward-offer" role="status">
           <h3>현재 기회를 모두 사용했어요</h3>
           <p className="result-message">{rewarded.available ? "광고를 끝까지 보면 1번 더 도전할 수 있어요. 이번 문제에서 광고를 " + (MAX_REWARDED_ADS - round.rewardAdsWatched) + "번 더 볼 수 있어요." : "정답을 확인하고 이번 도전을 마칠 수 있어요."}</p>
+          {rewarded.error && <p className="result-message">{rewarded.error}</p>}
           <div className="result-buttons">
-            {rewarded.available && <button type="button" className="button primary" disabled={!rewarded.ready || rewarded.showing}
-              onClick={() => rewarded.showIfReady(() => dispatch({ type: "grantReward", ...offerAction }))}>{rewarded.showing ? "광고 재생 중" : rewarded.ready ? "광고 보고 1번 더 도전" : "광고 준비 중"}</button>}
-            <button type="button" className="button secondary" onClick={() => dispatch({ type: "finish", ...offerAction })}>정답 확인하기</button>
+            {rewarded.available && <button type="button" className="button primary" disabled={rewarded.showing || (!rewarded.ready && !rewarded.error)}
+              onClick={() => rewarded.error ? rewarded.retryLoad() : rewarded.showIfReady(() => dispatch({ type: "grantReward", ...offerAction }))}>{rewarded.showing ? "광고 재생 중" : rewarded.error ? "광고 다시 불러오기" : rewarded.ready ? "광고 보고 1번 더 도전" : "광고 준비 중"}</button>}
+            <button type="button" className="button secondary" disabled={rewarded.showing} onClick={() => dispatch({ type: "finish", ...offerAction })}>정답 확인하기</button>
           </div>
         </div>}
         {finished && <div className={"result-card " + (round.status === "won" ? "result-won" : "")} role="status">
@@ -561,7 +563,7 @@ export default function App() {
       <aside className="side-panel"><div className="daily-card-row">
         <section className="daily-card"><span className="section-kicker">EVERY DAY, A NEW CHALLENGE</span><div className="daily-card-bottom"><div><span>오늘의 진행</span><strong>{done}<small> / 1</small></strong></div><div className="countdown"><span>다음 도전까지</span><strong>{countdown}</strong></div></div><div className="daily-track"><span style={{ width: done * 100 + "%" }} /></div></section>
         <button type="button" className="records-icon" aria-label="나의 스카우팅 기록 보기" onClick={() => setModal("stats")}><Icon name="chart" /><span>스카우팅 기록</span></button>
-      </div></aside>
+      </div><StreakPromotion history={state.history} today={state.date} /></aside>
     </div>
     {/*<p className="data-preview-note">2026 시즌 · 데이터 기준 {SNAPSHOT_DATE}{DEMO_DATA ? " · 연습 데이터" : !RELEASE_READY ? " · 미리보기" : ""}</p>*/}
   </main>

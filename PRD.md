@@ -44,10 +44,12 @@
 | 도메인 | 왜 필요한가 | 런타임 기기 권한 | 실패 시 동작 |
 |---|---|---|---|
 | 인앱 광고(보상형) | 광고 시청 완료 후 추가 추측 1회 지급 | 없음 | 정답 확인으로 문제 종료 |
+| 프로모션 | 5일 연속 성공 구간마다 500 토스 포인트 지급 | 없음 | 지급 결과 안내, 명확한 거절만 재시도 |
 
 - 진행 상태·통계·도감은 원본처럼 앱별 키를 둔 로컬 저장소에 저장한다. 원본은 브라우저 `localStorage`를 쓴다. 앱인토스 SDK `Storage`로 바꾸려면 [공식 스토리지 문서](https://developers-apps-in-toss.toss.im/documentation/common/file-storage/storage)를 먼저 확인한다. 기기 간 동기화는 v1 범위 밖이다.
 - 보상형 광고는 [공식 광고 문서](https://developers-apps-in-toss.toss.im/documentation/common/monetization/iaa/interstitial-rewarded-ad)의 완료 이벤트에서만 보상을 지급한다. 광고 닫힘·실패 이벤트에는 지급하지 않는다. 중복 이벤트에도 한 번만 지급되도록 한다.
 - 추가 런타임 기기 권한은 없다. 앱인토스 미니앱은 새 `appName`으로 별도 등록한다. [미니앱 등록 안내](https://developers-apps-in-toss.toss.im/guide/operation/console-workspace)
+- 프로모션 기간은 2026-11-06~2026-12-31(한국 시간)이다. 5·10·15일 연속 성공처럼 겹치지 않는 5일 구간마다 500 토스 포인트를 지급하며 누락일·실패는 연속 기록을 초기화한다. `Promotion.grantReward` 호출 전 달성 구간별 지급 시도를 저장하고, 불명확한 응답은 자동 재시도하지 않는다. 개발 서버와 별도 테스트 빌드는 `TEST_` 코드만 쓴다. 상세 코드·콘솔 테스트/시작 절차와 로컬 기록의 한계는 README를 따른다.
 
 ## 6. 데이터
 

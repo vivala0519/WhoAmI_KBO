@@ -1,7 +1,7 @@
 import { defineConfig } from '@apps-in-toss/web-framework/config';
 
 export default defineConfig({
-  appName: 'whoamikbo',
+  appName: 'whoami-kbo',
   brand: { primaryColor: '#3169df' },
   permissions: [],
   webView: { bounces: false, pullToRefreshEnabled: false },
