@@ -116,6 +116,7 @@ function validatePlayer(row, rowNumber, manifest, errors) {
   const latin = string(row.latin);
   const club = clubAliases.get(string(row.club));
   const position = positionAliases.get(string(row.position));
+  const throwBat = string(row.throwBat).normalize('NFC').replace(/\s+/g, '');
   const birthYear = integer(row.birthYear);
   const number = row.number;
   const heightCm = integer(row.heightCm);
@@ -132,6 +133,7 @@ function validatePlayer(row, rowNumber, manifest, errors) {
   if (!latin) errors.push(`${prefix}: latin (English search name) is missing`);
   if (!club) errors.push(`${prefix}: unknown club ${JSON.stringify(row.club)}`);
   if (!position) errors.push(`${prefix}: position must be one of 투수, 포수, 내야수, 외야수`);
+  if (!/^(?:우투|좌투|우언|좌언|양투)(?:우타|좌타|양타)$/.test(throwBat)) errors.push(`${prefix}: throwBat must be a complete type such as 우투우타 or 좌투좌타`);
   if (birthYear === null || birthYear < 1940 || birthYear > 2012) errors.push(`${prefix}: invalid birthYear`);
   if (typeof number !== 'string' || !/^\d{1,3}$/.test(number)) errors.push(`${prefix}: number must be a 1-3 digit string such as "0", "00" or "02"`);
   if (heightCm === null || heightCm < 140 || heightCm > 220) errors.push(`${prefix}: heightCm must be 140-220`);
@@ -151,7 +153,7 @@ function validatePlayer(row, rowNumber, manifest, errors) {
   if (suppliedKRW === null || suppliedKRW !== computedKRW) errors.push(`${prefix}: salaryKRW must equal rounded original amount × fxRate`);
   if (errors.some((error) => error.startsWith(`${prefix}:`))) return null;
   return {
-    id, name, latin, club, position, birthYear, number, heightCm,
+    id, name, latin, club, position, throwBat, birthYear, number, heightCm,
     salaryKRW: computedKRW, salaryOriginalAmount: original, salaryCurrency: currency,
     salaryDefinition: definition, fxRate, fxDate, sourceUrl, snapshotDate, season: 2026,
   };

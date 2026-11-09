@@ -47,28 +47,14 @@
 .streak-promotion-track > .complete {
   background: var(--accent);
 }
-.streak-promotion-result,
-.streak-promotion-test {
+.streak-promotion-result {
   margin-top: 16px;
   padding: 16px;
   border-radius: 12px;
   background: var(--surface);
 }
-.streak-promotion-result > p,
-.streak-promotion-test > p {
+.streak-promotion-result > p {
   margin-top: 0;
-}
-.streak-promotion-test {
-  background: var(--warning-bg);
-  color: var(--warning-text);
-}
-.streak-promotion-test strong {
-  font-size: 16px;
-  font-weight: 600;
-}
-.streak-promotion-test > p {
-  margin-top: 8px;
-  color: var(--warning-text);
 }
 .streak-promotion .button {
   width: 100%;

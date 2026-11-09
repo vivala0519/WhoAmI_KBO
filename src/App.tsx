@@ -3,7 +3,8 @@ import type { ReactNode, RefObject } from "react";
 import { Icon } from "./icons";
 import { ParticleBall } from "./ParticleBall";
 import { useRewardedAd } from "./useRewardedAd";
-import { StreakPromotion } from "./StreakPromotion";
+import { PromotionTestBanner, StreakPromotion } from "./StreakPromotion";
+import { PROMOTION_TEST_MODE } from "./promotionRewards";
 import {
   categories, compare, dayKey, DEMO_DATA, MAX_REWARDED_ADS, MAX_TOTAL_ATTEMPTS,
   playerMap, players, reducer, RELEASE_READY, restore, shareText, searchPlayers, SNAPSHOT_DATE,
@@ -506,6 +507,7 @@ export default function App() {
       </div>
       <div className="hero-art" aria-hidden="true"><ParticleBall theme={theme} /></div>
     </section>
+    {PROMOTION_TEST_MODE && <PromotionTestBanner />}
     <div className="mode-bar">
       <div className="mode-tabs"><div className="daily-mode-label" id="daily-title"><Icon name="calendar" />오늘의 챌린지<span className="tab-count">1</span></div></div>
       <span className="date-label">{state.date.replaceAll("-", ".")} <span className="date-dot" />새로운 도전이 기다려요</span>
@@ -563,7 +565,7 @@ export default function App() {
       <aside className="side-panel"><div className="daily-card-row">
         <section className="daily-card"><span className="section-kicker">EVERY DAY, A NEW CHALLENGE</span><div className="daily-card-bottom"><div><span>오늘의 진행</span><strong>{done}<small> / 1</small></strong></div><div className="countdown"><span>다음 도전까지</span><strong>{countdown}</strong></div></div><div className="daily-track"><span style={{ width: done * 100 + "%" }} /></div></section>
         <button type="button" className="records-icon" aria-label="나의 스카우팅 기록 보기" onClick={() => setModal("stats")}><Icon name="chart" /><span>스카우팅 기록</span></button>
-      </div><StreakPromotion history={state.history} today={state.date} /></aside>
+      </div>{!PROMOTION_TEST_MODE && <StreakPromotion history={state.history} today={state.date} />}</aside>
     </div>
     {/*<p className="data-preview-note">2026 시즌 · 데이터 기준 {SNAPSHOT_DATE}{DEMO_DATA ? " · 연습 데이터" : !RELEASE_READY ? " · 미리보기" : ""}</p>*/}
   </main>

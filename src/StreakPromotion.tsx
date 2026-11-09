@@ -16,7 +16,9 @@ function outcomeText(outcome: VisibleOutcome) {
       ? "테스트 지급을 완료했어요."
       : `${PROMOTION_REWARD_AMOUNT} 토스 포인트 달성 보상 지급 완료`;
     case "pending": return "토스 포인트 지급을 확인하고 있어요.";
-    case "unsupported": return "최신 토스 앱에서 지급을 확인해 주세요.";
+    case "unsupported": return PROMOTION_TEST_MODE
+      ? "토스 앱의 QR 테스트에서 지급을 확인해 주세요."
+      : "최신 토스 앱에서 지급을 확인해 주세요.";
     case "retryable": return outcome.code === "4109"
       ? "프로모션이 아직 시작되지 않았거나 종료됐어요. 운영 상태 확인 후 다시 시도해 주세요."
       : "포인트를 지급하지 못했어요. 잠시 후 다시 시도해 주세요.";
@@ -31,6 +33,30 @@ function outcomeText(outcome: VisibleOutcome) {
   }
 }
 
+export function PromotionTestBanner() {
+  const [outcome, setOutcome] = useState<VisibleOutcome>(null);
+  const busy = useRef(false);
+
+  const test = async () => {
+    if (busy.current) return;
+    busy.current = true;
+    setOutcome({ status: "pending" });
+    try { setOutcome(await grantPromotionTest()); }
+    catch { setOutcome({ status: "uncertain" }); }
+    finally { busy.current = false; }
+  };
+
+  return <section className="promotion-test-banner" aria-label="프로모션 테스트">
+    <div>
+      <strong>프로모션 테스트 모드</strong>
+      <p>테스트 코드로 1회 지급을 확인해요.</p>
+      {outcome && <p role="status">{outcomeText(outcome)}</p>}
+    </div>
+    <button type="button" className="button secondary" disabled={outcome?.status === "pending"}
+      onClick={() => void test()}>테스트 지급 확인</button>
+  </section>;
+}
+
 export function StreakPromotion({ history, today }: { history: readonly DailyResult[]; today: string }) {
   const [ownedHistory, setOwnedHistory] = useState<readonly DailyResult[]>([]);
   const campaignHistory = ownedHistory.filter(({ date }) => date >= PROMOTION_START_DATE && date <= PROMOTION_END_DATE);
@@ -39,7 +65,6 @@ export function StreakPromotion({ history, today }: { history: readonly DailyRes
   const campaignActive = today >= PROMOTION_START_DATE && today <= PROMOTION_END_DATE;
   const [outcome, setOutcome] = useState<VisibleOutcome>(null);
   const [retry, setRetry] = useState(0);
-  const busy = useRef(false);
   const historyRef = useRef(ownedHistory);
   historyRef.current = ownedHistory;
   const milestoneKey = milestones.map(({ id }) => id).join("|");
@@ -72,12 +97,10 @@ export function StreakPromotion({ history, today }: { history: readonly DailyRes
 
   useEffect(() => {
     if (!campaignActive || !milestoneKey) {
-      busy.current = false;
       if (!campaignActive) setOutcome(null);
       return;
     }
     let active = true;
-    busy.current = true;
     setOutcome({ status: "pending" });
     const grant = async () => {
       for (const milestone of getPromotionMilestones(historyRef.current.filter(({ date }) =>
@@ -87,24 +110,14 @@ export function StreakPromotion({ history, today }: { history: readonly DailyRes
         setOutcome(result);
         if (result.status !== "paid") break;
       }
-      if (active) busy.current = false;
     };
     void grant().catch(() => {
-      if (active) { busy.current = false; setOutcome({ status: "uncertain" }); }
+      if (active) setOutcome({ status: "uncertain" });
     });
     return () => { active = false; };
   }, [campaignActive, milestoneKey, retry, today]);
 
-  const test = async () => {
-    if (!PROMOTION_TEST_MODE || busy.current) return;
-    busy.current = true;
-    setOutcome({ status: "pending" });
-    try { setOutcome(await grantPromotionTest()); }
-    catch { setOutcome({ status: "uncertain" }); }
-    finally { busy.current = false; }
-  };
-
-  if (!campaignActive && !PROMOTION_TEST_MODE) return null;
+  if (!campaignActive) return null;
   return <section className="streak-promotion" aria-labelledby="streak-promotion-title">
     <div className="streak-promotion-heading">
       <h3 id="streak-promotion-title">5일 연속 성공 챌린지</h3>
@@ -122,12 +135,6 @@ export function StreakPromotion({ history, today }: { history: readonly DailyRes
       <p>{outcomeText(outcome)}</p>
       {(outcome.status === "retryable" || outcome.status === "storageError") &&
         <button type="button" className="button secondary" onClick={() => setRetry((value) => value + 1)}>지급 다시 확인하기</button>}
-    </div>}
-    {PROMOTION_TEST_MODE && <div className="streak-promotion-test">
-      <strong>프로모션 테스트 모드</strong>
-      <p>테스트 코드로 1회 지급을 확인해요.</p>
-      <button type="button" className="button secondary" disabled={outcome?.status === "pending"}
-        onClick={() => void test()}>테스트 지급 확인</button>
     </div>}
   </section>;
 }

@@ -199,6 +199,7 @@ try {
     const number = detail['등번호']?.trim() || '';
     const club = salary['소속구단']?.trim() || '';
     const position = salary['포지션']?.trim() || '';
+    const throwBat = (detail['투타유형'] || '').normalize('NFC').replace(/\s+/g, '');
     const birthYear = positiveInteger(salary['출생연도']);
     const heightCm = positiveInteger(salary['키_cm']);
     const original = positiveInteger(salary['연봉_금액']);
@@ -213,6 +214,7 @@ try {
     if (!salary['선수명']?.trim()) reject('missingName');
     if (!clubs.has(club)) reject('invalidClub');
     if (!positions.has(position)) reject('invalidPosition');
+    if (!/^(?:우투|좌투|우언|좌언|양투)(?:우타|좌타|양타)$/.test(throwBat)) reject('missingOrInvalidThrowBat');
     if (birthYear === null || birthYear < 1940 || birthYear > 2012) reject('missingOrInvalidBirthYear');
     if (heightCm === null || heightCm < 140 || heightCm > 220) reject('missingOrInvalidHeight');
     if (original === null) reject('missingOrInvalidOriginalSalary');
@@ -234,6 +236,7 @@ try {
       salaryKRW, fxRate, fxDate,
       sourceUrl: salary['공식프로필_URL'],
       snapshotDate, season: 2026,
+      throwBat,
     });
   }
   if (eligible.length < 250) throw new Error('Only ' + eligible.length + ' players are eligible; need 250');
@@ -244,7 +247,7 @@ try {
   const tiedAtCutoff = eligible.filter((player) => player.salaryKRW === cutoff).length;
   const selectedTies = 250 - aboveCutoff;
   const dataset = {
-    version: '2026-kbo-top250-' + snapshotDate + '-v1',
+    version: '2026-kbo-top250-' + snapshotDate + '-v1-throw-bat-v1',
     season: 2026,
     snapshotDate,
     demo: false,
@@ -280,7 +283,6 @@ try {
       eligible: eligible.length,
       excluded: salaryRows.length - eligible.length,
       exclusionReasons: exclusions,
-      exclusionReasonCountsMayOverlap: true,
       exclusionReasonCountsMayOverlap: true,
       selected: 250,
       jerseyNumbersPreserveLeadingZeros: true,

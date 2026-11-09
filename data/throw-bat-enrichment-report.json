@@ -1,0 +1,23 @@
+{
+  "sourceFile": {
+    "name": "kbo_players_2026_all.json",
+    "sha256": "908f7183838224dd11333ea4d6d3666d7a7a0740e59bc06c42c5f8a23744ff95",
+    "rows": 1043
+  },
+  "selectedPlayers": 250,
+  "matchedPlayers": 250,
+  "missingThrowBat": 0,
+  "throwBatCounts": {
+    "우투우타": 141,
+    "우언우타": 11,
+    "좌투우타": 3,
+    "좌투좌타": 40,
+    "우투좌타": 51,
+    "우투양타": 4
+  },
+  "originalPlayerFieldsPreserved": true,
+  "selectedPlayerOrderPreserved": true,
+  "scheduleSha256": "fcaaa1785358a75294a49afc3c18ebc72101e34b6d117aa55dc3b0628b02b458",
+  "scheduleUnchanged": true,
+  "datasetVersion": "2026-kbo-top250-2026-11-05-v1-throw-bat-v1"
+}

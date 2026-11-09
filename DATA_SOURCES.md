@@ -14,6 +14,16 @@ node scripts/select-kbo-top250.mjs --salary "C:\Users\seungho\Documents\Codex\20
 
 스크립트는 같은 폴더의 `kbo_players_2026_all.csv`를 자동으로 읽는다. 영문 이름이 원본에 없어 Wikidata에서 한글 이름·출생연도·구단이 일치하는 85명의 영문 표기를 사용하고, 나머지 165명은 검색용 로마자 별칭을 생성했다. 생성 별칭은 공식 영문 이름으로 표시하지 않는다. 원본 검색 결과에는 퓨처스 및 과거 기록이 섞일 수 있어 250명 모두의 2026 1군 출전을 보증하지 않는다.
 
+## 투타유형 보강
+
+기존에 선정한 250명의 ID를 사용자 제공 `kbo_players_2026_all.json`과 결합해 `투타유형`을 `throwBat`으로 추가했다. 이름·소속·포지션·등번호·키·출생연도·연봉·환율 등 기존 값이 모두 일치하는지 검사했으며, 선수 250명과 순서 및 일일 정답 일정은 보존했다. [보강 보고서](./data/throw-bat-enrichment-report.json)에 원본 JSON 해시, 250명 전체 매칭, 유형별 인원과 일정 해시를 남겼다.
+
+```powershell
+node scripts/enrich-throw-bat.mjs --source "C:\Users\seungho\Documents\Codex\2026-11-05\kbo\outputs\kbo_players_2026_all.json" --check-only
+```
+
+`--check-only`를 빼면 기존 선수 필드는 유지한 채 투타유형만 반영한다. 공백을 제거해 `우투우타` 같은 표기로 정규화하며, 누락·알 수 없는 유형·중복 ID가 있으면 반영하지 않는다. 현재 250명은 모두 투타유형이 있다.
+
 ## 공개 출처와 권리 확인
 
 - [KBO 선수 등록 현황](https://www.koreabaseball.com/Player/Register.aspx)은 조회 날짜의 구단·포지션·등번호·생년월일·체격을, [선수 상세](https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64001)는 연봉을 보여준다. 하루의 등록 현황은 시즌 전체 출전 선수 목록이 아니다.
@@ -42,6 +52,7 @@ CSV는 UTF-8 헤더를 사용한다. JSON은 같은 키를 가진 선수 배열 
 | `id`, `name`, `latin` | 고유 ID, 한글 검색명, 영문 검색명 |
 | `club` | 10개 구단 약칭 또는 정식 명칭. 출력은 `LG`, `KT`, `SSG`, `삼성`, `KIA`, `두산`, `롯데`, `NC`, `한화`, `키움`으로 통일 |
 | `position` | `투수`, `포수`, `내야수`, `외야수` 또는 대응 영문 |
+| `throwBat` | 완전한 투타유형. 예: `우투우타`, `우언우타`, `좌투좌타`, `우투양타` |
 | `birthYear`, `heightCm` | 정수 |
 | `number` | **1~3자리 숫자 문자열**. `"0"`, `"00"`, `"02"`처럼 앞자리 0을 보존 |
 | `salaryOriginalAmount`, `salaryCurrency` | 원통화 **단위** 금액과 3자리 통화 코드. 예: 2억 원은 `200000000`, `KRW` |
