@@ -1,4 +1,4 @@
-import { dailyAnswer, dayKey, MAX_TOTAL_ATTEMPTS } from "./game";
+import { dayKey, isPublishedAnswer, MAX_TOTAL_ATTEMPTS } from "./game";
 import type { DailyResult } from "./game";
 
 export const PROMOTION_STREAK_DAYS = 5;
@@ -24,7 +24,7 @@ function validResult(result: DailyResult): boolean {
   return typeof result.won === "boolean" &&
     Number.isInteger(result.attempts) &&
     result.attempts >= 1 && result.attempts <= MAX_TOTAL_ATTEMPTS &&
-    result.answer === dailyAnswer(result.date);
+    isPublishedAnswer(result.date, result.answer);
 }
 
 function evaluate(history: readonly DailyResult[], today: string) {

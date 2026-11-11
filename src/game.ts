@@ -72,12 +72,18 @@ export interface GameState {
 export const MAX_ATTEMPTS = 5;
 export const MAX_REWARDED_ADS = 3;
 export const MAX_TOTAL_ATTEMPTS = MAX_ATTEMPTS + MAX_REWARDED_ADS;
-export const DATA_VERSION = dataset.version;
+export const TOP100_START_DATE = "2026-11-11";
+export const DATA_VERSION = `${dataset.version}-top100-${TOP100_START_DATE}`;
 export const DEMO_DATA = dataset.demo;
 export const RELEASE_READY = (dataset as unknown as { releaseReady?: boolean }).releaseReady === true;
 export const SNAPSHOT_DATE = dataset.snapshotDate;
-export const players: Player[] = dataset.players as unknown as Player[];
-export const playerMap = new Map(players.map((player) => [player.id, player]));
+const originalPlayers = dataset.players as unknown as Player[];
+export const players: Player[] = [...originalPlayers]
+  .sort((a, b) => b.salaryKRW - a.salaryKRW || Number(a.id) - Number(b.id))
+  .slice(0, 100);
+// Keep historical guesses, results and collected cards readable after the pool change.
+export const playerMap = new Map(originalPlayers.map((player) => [player.id, player]));
+const selectedPlayerIds = new Set(players.map((player) => player.id));
 export const categories = [
   "구단",
   "포지션",
@@ -87,8 +93,13 @@ export const categories = [
   "키",
   "연봉",
 ] as const;
-const scheduledPlayers: string[] = schedule.players;
 const startTimestamp = Date.parse(schedule.startDate + "T00:00:00Z");
+const top100StartTimestamp = Date.parse(TOP100_START_DATE + "T00:00:00Z");
+const scheduleOffset = Math.floor((top100StartTimestamp - startTimestamp) / 86_400_000) % schedule.players.length;
+const scheduledPlayers = [
+  ...schedule.players.slice(scheduleOffset),
+  ...schedule.players.slice(0, scheduleOffset),
+].filter((id) => selectedPlayerIds.has(id));
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const validDateKey = (value: string) => {
   if (!datePattern.test(value)) return false;
@@ -107,13 +118,27 @@ export function dayKey(date = new Date()): string {
   return `${part("year")}-${part("month")}-${part("day")}`;
 }
 
+export function playersForDate(date = dayKey()): readonly Player[] {
+  return date < TOP100_START_DATE ? originalPlayers : players;
+}
+
 export function dailyAnswer(date: string): string {
   const timestamp = Date.parse(date + "T00:00:00Z");
-  if (!validDateKey(date) || !scheduledPlayers.length) {
+  const legacy = date < TOP100_START_DATE;
+  const cycle = legacy ? schedule.players : scheduledPlayers;
+  if (!validDateKey(date) || !cycle.length) {
     throw new Error("일일 문제 일정이 올바르지 않습니다.");
   }
-  const offset = Math.floor((timestamp - startTimestamp) / 86_400_000);
-  return scheduledPlayers[((offset % scheduledPlayers.length) + scheduledPlayers.length) % scheduledPlayers.length];
+  const offset = Math.floor((timestamp - (legacy ? startTimestamp : top100StartTimestamp)) / 86_400_000);
+  return cycle[((offset % cycle.length) + cycle.length) % cycle.length];
+}
+
+export function isPublishedAnswer(date: string, answer: string): boolean {
+  if (!validDateKey(date)) return false;
+  const offset = Math.floor((Date.parse(date + "T00:00:00Z") - startTimestamp) / 86_400_000);
+  const legacyAnswer = schedule.players[((offset % schedule.players.length) + schedule.players.length) % schedule.players.length];
+  // Completed rounds from clients using the previous schedule still count toward streaks.
+  return answer === dailyAnswer(date) || answer === legacyAnswer;
 }
 
 export const makeRound = (answer: string): Round => ({
@@ -202,7 +227,7 @@ export function reducer(state: GameState, action: Action): GameState {
   if (action.type === "guess") {
     if (
       round.status !== "playing" ||
-      !playerMap.has(action.id) ||
+      !playersForDate(state.date).some((player) => player.id === action.id) ||
       round.guesses.includes(action.id) ||
       round.guesses.length >= round.maxAttempts
     ) return state;
@@ -279,11 +304,11 @@ const chosung = (value: string) =>
       : letter;
   }).join("");
 
-export function searchPlayers(query: string, guessed: string[] = []): Player[] {
+export function searchPlayers(query: string, guessed: string[] = [], date = dayKey()): Player[] {
   const normalized = normalize(query.trim());
   if (!normalized) return [];
   const used = new Set(guessed);
-  return players
+  return playersForDate(date)
     .filter((player) =>
       !used.has(player.id) &&
       (normalize(player.name).includes(normalized) ||
@@ -343,19 +368,39 @@ export function restore(raw: string | null, date = dayKey()): GameState {
       playerMap.has(id) && typeof acquired === "string" && validDateKey(acquired)
     )) return fresh();
     const state: GameState = { ...saved, stats: statsFromHistory(saved.history) };
-    return saved.date === date ? state : reducer(state, { type: "day", date });
+    if (saved.date !== date) return reducer(state, { type: "day", date });
+    if (date >= TOP100_START_DATE && state.round.answer !== dailyAnswer(date) &&
+      (state.round.status === "playing" || state.round.status === "rewardOffer")) {
+      return { ...state, round: makeRound(dailyAnswer(date)) };
+    }
+    return state;
   } catch {
     return fresh();
   }
 }
 
-export function shareText(state: GameState): string {
+export function shareText(state: GameState, link = "https://tossminiapp.com/s/58Mf8FhB"): string {
   const { round, date } = state;
-  const result = round.status === "won" ? `${round.guesses.length}/${round.maxAttempts}` : "X";
-  const cells = round.guesses.map((id) => {
-    const guess = playerMap.get(id)!;
-    const answer = playerMap.get(round.answer)!;
-    return compare(guess, answer).map((clue) => clue.match === "exact" ? "🟩" : clue.direction ? "🟨" : "⬛").join("");
-  }).join("\n");
-  return `2026 야구 선수 맞히기 · ${date}\n${result}\n${cells}`;
+  const [, month, day] = date.split("-");
+  const answer = playerMap.get(round.answer)!;
+  const result = round.status === "won" ? "성공!" : round.status === "playing" || round.status === "rewardOffer" ? "진행 중" : "실패!";
+  const averageAttempts = state.stats.won
+    ? state.stats.distribution.reduce((sum, count, index) => sum + count * (index + 1), 0) / state.stats.won
+    : null;
+  return [
+    "Who am I? - KBO",
+    `${month}월 ${day}일 오늘의 챌린지 ${result}`,
+    "",
+    ...round.guesses.map((id) =>
+      compare(playerMap.get(id)!, answer)
+        .map((clue) => clue.match === "exact" ? "🟩" : clue.direction ? "🟨" : "⬛")
+        .join(""),
+    ),
+    `누적 플레이: ${state.stats.played}회`,
+    `승률: ${state.stats.played ? `${Math.round((state.stats.won / state.stats.played) * 100)}%` : "—"}`,
+    `평균 시도 횟수: ${averageAttempts === null ? "—" : `${averageAttempts.toFixed(1)}회`}`,
+    `현재 연승: ${state.stats.streak}연승`,
+    "",
+    link,
+  ].join("\n");
 }

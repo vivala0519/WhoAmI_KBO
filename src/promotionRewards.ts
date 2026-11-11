@@ -1,5 +1,5 @@
 import { Promotion, User } from "@apps-in-toss/web-framework";
-import { dailyAnswer, dayKey, MAX_TOTAL_ATTEMPTS } from "./game";
+import { dayKey, isPublishedAnswer, MAX_TOTAL_ATTEMPTS } from "./game";
 import type { DailyResult } from "./game";
 import { getPromotionMilestones, PROMOTION_REWARD_AMOUNT } from "./promotion";
 import type { PromotionMilestone } from "./promotion";
@@ -87,7 +87,7 @@ function todaysWin(history: readonly DailyResult[], today: string): boolean {
   const rows = history.filter((result) => result?.date === today);
   const first = rows[0];
   return rows.length > 0 && rows.every((result) => result.won === true &&
-    result.answer === dailyAnswer(today) && Number.isInteger(result.attempts) &&
+    result.answer === first.answer && isPublishedAnswer(today, result.answer) && Number.isInteger(result.attempts) &&
     result.attempts >= 1 && result.attempts <= MAX_TOTAL_ATTEMPTS && result.attempts === first.attempts);
 }
 

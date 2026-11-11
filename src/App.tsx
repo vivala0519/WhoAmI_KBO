@@ -1,5 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useReducer, useRef, useState } from "react";
 import type { ReactNode, RefObject } from "react";
+import { Share } from "@apps-in-toss/web-framework";
 import { Icon } from "./icons";
 import { ParticleBall } from "./ParticleBall";
 import { useRewardedAd } from "./useRewardedAd";
@@ -7,7 +8,7 @@ import { PromotionTestBanner, StreakPromotion } from "./StreakPromotion";
 import { PROMOTION_TEST_MODE } from "./promotionRewards";
 import {
   categories, compare, dayKey, DEMO_DATA, MAX_REWARDED_ADS, MAX_TOTAL_ATTEMPTS,
-  playerMap, players, reducer, RELEASE_READY, restore, shareText, searchPlayers, SNAPSHOT_DATE,
+  playerMap, players, playersForDate, reducer, RELEASE_READY, restore, shareText, searchPlayers, SNAPSHOT_DATE,
 } from "./game";
 import type { Clue, GameState, Player } from "./game";
 
@@ -103,14 +104,16 @@ function Modal({
 function Search({
   guesses,
   onGuess,
+  date,
 }: {
   guesses: string[];
   onGuess: (id: string) => void;
+  date: string;
 }) {
   const [query, setQuery] = useState(""),
     [focused, setFocused] = useState(false),
     [highlight, setHighlight] = useState(0);
-  const results = searchPlayers(query, guesses),
+  const results = searchPlayers(query, guesses, date),
     listId = useId(),
     input = useRef<HTMLInputElement>(null);
   const open = focused && query.trim().length > 0;
@@ -256,15 +259,19 @@ function HelpContent() {
     <p className="example-caption">매일 한국 시간 자정에 새 문제가 열려요. 기록과 도감은 이 기기에 저장돼요.</p>
   </>;
 }
-function CollectionContent({ collectionDates }: { collectionDates: Record<string, string> }) {
+function CollectionContent({ collectionDates, date }: { collectionDates: Record<string, string>; date: string }) {
   const ids = Object.keys(collectionDates).filter((id) => playerMap.has(id));
+  const pool = playersForDate(date);
+  const currentCount = pool.filter((player) => collectionDates[player.id]).length;
+  const previousCount = ids.length - currentCount;
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selected = selectedId ? playerMap.get(selectedId) : undefined;
   return <>
     <div className="collection-summary" role="status">
       <div><span>오늘의 챌린지</span><h3>2026 KBO 도감</h3></div>
-      <strong>{ids.length}<small> / {players.length}</small></strong>
+      <strong>{currentCount}<small> / {pool.length}</small></strong>
     </div>
+    {previousCount > 0 && <p className="modal-intro">이전 챌린지에서 모은 {previousCount}장도 함께 볼 수 있어요.</p>}
     {selected ? <div className="collection-detail">
       <button type="button" className="collection-detail-back" onClick={() => setSelectedId(null)} autoFocus><Icon name="chevron" />도감으로 돌아가기</button>
       <div className="collection-detail-card"><PlayerAvatar player={selected} /><div className="collection-detail-info">
@@ -431,6 +438,7 @@ export default function App() {
   const [toast, setToast] = useState("");
   const [tick, setTick] = useState(Date.now());
   const [copied, setCopied] = useState(false);
+  const [shareLink, setShareLink] = useState<string | null>(null);
   const [storageError, setStorageError] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const collectionIconRef = useRef<HTMLButtonElement>(null);
@@ -486,7 +494,17 @@ export default function App() {
     dispatch({ type: "guess", id });
   };
   const share = async () => {
-    try { await navigator.clipboard.writeText(shareText(state)); setCopied(true); setToast("결과를 복사했어요. 친구에게 공유해 보세요."); }
+    let link = shareLink;
+    if (!link && typeof Share.createLink === "function") {
+      try {
+        const generated = await Share.createLink({ path: "intoss://whoami-kbo" });
+        if (generated.startsWith("https://")) {
+          link = generated;
+          setShareLink(generated);
+        }
+      } catch { /* Keep the service link when the Toss bridge is unavailable. */ }
+    }
+    try { await navigator.clipboard.writeText(shareText(state, link ?? undefined)); setCopied(true); setToast("결과를 복사했어요. 친구에게 공유해 보세요."); }
     catch { setModal("share"); }
   };
   const offerAction = { answer: round.answer, date: state.date, offerAtGuess: round.guesses.length };
@@ -524,7 +542,7 @@ export default function App() {
           <h2>{rewardOffer ? "기회가 더 필요하신가요?" : finished ? round.status === "won" ? "정답을 찾았어요!" : "정답을 확인해 보세요" : "어떤 선수일까요?"}</h2>
           <p>{rewardOffer ? "정답은 아직 공개되지 않았어요." : finished ? "단서를 연결한 당신의 추측을 돌아보세요." : "단서를 모아 정답에 가까워져 보세요."}</p>
         </div>
-        {round.status === "playing" && <Search key={roundKey} guesses={round.guesses} onGuess={submitGuess} />}
+        {round.status === "playing" && <Search key={roundKey} guesses={round.guesses} onGuess={submitGuess} date={state.date} />}
         {rewardOffer && <div className="result-card reward-offer" role="status">
           <h3>현재 기회를 모두 사용했어요</h3>
           <p className="result-message">{rewarded.available ? "광고를 끝까지 보면 1번 더 도전할 수 있어요. 이번 문제에서 광고를 " + (MAX_REWARDED_ADS - round.rewardAdsWatched) + "번 더 볼 수 있어요." : "정답을 확인하고 이번 도전을 마칠 수 있어요."}</p>
@@ -573,7 +591,7 @@ export default function App() {
   {toast && <div className="toast" role="status"><Icon name="check" />{toast}</div>}
   {collectionAnimation && <CollectionAnimation key={collectionAnimation.roundKey} player={collectionAnimation.player} iconRef={collectionIconRef} onComplete={() => setCollectionAnimation(null)} />}
   {modal && <Modal title={modal === "help" ? "게임 방법" : modal === "stats" ? "나의 스카우팅 기록" : modal === "collection" ? "선수 도감" : "결과 공유"} onClose={() => setModal(null)}>
-    {modal === "help" ? <HelpContent /> : modal === "stats" ? <StatsContent state={state} /> : modal === "collection" ? <CollectionContent collectionDates={state.collectionDates} /> : <><p className="modal-intro">아래 결과를 복사해 친구에게 공유하세요.</p><textarea className="share-fallback" aria-label="공유할 결과" readOnly value={shareText(state)} onFocus={(event) => event.target.select()} /></>}
+    {modal === "help" ? <HelpContent /> : modal === "stats" ? <StatsContent state={state} /> : modal === "collection" ? <CollectionContent collectionDates={state.collectionDates} date={state.date} /> : <><p className="modal-intro">아래 결과를 복사해 친구에게 공유하세요.</p><textarea className="share-fallback" aria-label="공유할 결과" readOnly value={shareText(state, shareLink ?? undefined)} onFocus={(event) => event.target.select()} /></>}
   </Modal>}
   </div>;
 }
