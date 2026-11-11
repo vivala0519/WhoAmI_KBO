@@ -393,7 +393,7 @@ export function shareText(state: GameState, link = "https://tossminiapp.com/s/58
     "",
     ...round.guesses.map((id) =>
       compare(playerMap.get(id)!, answer)
-        .map((clue) => clue.match === "exact" ? "🟩" : clue.direction ? "🟨" : "⬛")
+        .map((clue) => clue.match === "exact" ? "🟩" : "⬛")
         .join(""),
     ),
     `누적 플레이: ${state.stats.played}회`,
